@@ -18,13 +18,13 @@ variable "kubernetes_count" {
 variable "kubernetes_image" {
   type = string
   description = "Image name for kubernetes nodes"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "kubernetes_flavor" {
   type = string
   description = "Flavor name for kubernetes nodes"
-  default = "gp.0.4.8"
+  default = "gp.5.2.6"
 }
 
 variable "network_count" {
@@ -36,13 +36,13 @@ variable "network_count" {
 variable "network_image" {
   type = string
   description = "Image name for network nodes"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "network_flavor" {
   type = string
   description = "Flavor name for network nodes"
-  default = "gp.0.4.8"
+  default = "gp.5.2.6"
 }
 
 variable "controller_count" {
@@ -54,13 +54,13 @@ variable "controller_count" {
 variable "controller_image" {
   type = string
   description = "Image name for controller"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "controller_flavor" {
   type = string
   description = "Flavor name for controller"
-  default = "gp.0.4.8"
+  default = "gp.5.2.6"
 }
 
 variable "worker_count" {
@@ -72,13 +72,13 @@ variable "worker_count" {
 variable "worker_image" {
   type = string
   description = "Image name for workers"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "worker_flavor" {
   type = string
   description = "Flavor name for workers"
-  default = "gp.0.4.8"
+  default = "gp.5.2.6"
 }
 
 variable "compute_count" {
@@ -90,13 +90,13 @@ variable "compute_count" {
 variable "compute_image" {
   type = string
   description = "Image name for compute nodes"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "compute_flavor" {
   type = string
   description = "Flavor name for compute nodes"
-  default = "gp.0.4.16"
+  default = "gp.5.2.8"
 }
 
 variable "storage_count" {
@@ -108,13 +108,13 @@ variable "storage_count" {
 variable "storage_image" {
   type = string
   description = "Image name for storage nodes"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "storage_flavor" {
   type = string
   description = "Flavor name for storage nodes"
-  default = "gp.0.4.8"
+  default = "gp.5.2.6"
 }
 
 variable "ceph_count" {
@@ -126,25 +126,25 @@ variable "ceph_count" {
 variable "ceph_image" {
   type = string
   description = "Image name for ceph nodes"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "ceph_flavor" {
   type = string
   description = "Flavor name for ceph nodes"
-  default = "gp.0.4.8"
+  default = "gp.5.2.6"
 }
 
 variable "bastion_image" {
   type = string
   description = "Image name for bastion node"
-  default = "Ubuntu 22.04"
+  default = "Ubuntu 24.04"
 }
 
 variable "bastion_flavor" {
   type = string
   description = "Flavor name for bastion node"
-  default = "gp.0.4.4"
+  default = "gp.5.4.4"
 }
 
 variable "cluster_name" {

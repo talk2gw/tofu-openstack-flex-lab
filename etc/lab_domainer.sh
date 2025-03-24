@@ -6,7 +6,7 @@ usage() {
     exit 1
 }
 
-domain=""
+domain="api.glab.tron.rax.io"
 environment="LAB1"
 
 while [[ "$#" -gt 0 ]]; do
