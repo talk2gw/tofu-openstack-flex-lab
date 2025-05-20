@@ -24,7 +24,11 @@ variable "kubernetes_image" {
 variable "kubernetes_flavor" {
   type = string
   description = "Flavor name for kubernetes nodes"
+<<<<<<< Updated upstream
   default = "gp.5.2.6"
+=======
+  default = "gp.5.2.8"
+>>>>>>> Stashed changes
 }
 
 variable "network_count" {
@@ -42,13 +46,17 @@ variable "network_image" {
 variable "network_flavor" {
   type = string
   description = "Flavor name for network nodes"
+<<<<<<< Updated upstream
   default = "gp.5.2.6"
+=======
+  default = "gp.5.2.8"
+>>>>>>> Stashed changes
 }
 
 variable "controller_count" {
   type = number
   description = "number of controllers"
-  default = 3
+  default = 5
 }
 
 variable "controller_image" {
@@ -60,7 +68,11 @@ variable "controller_image" {
 variable "controller_flavor" {
   type = string
   description = "Flavor name for controller"
+<<<<<<< Updated upstream
   default = "gp.5.2.6"
+=======
+  default = "gp.5.2.8"
+>>>>>>> Stashed changes
 }
 
 variable "worker_count" {
@@ -78,7 +90,11 @@ variable "worker_image" {
 variable "worker_flavor" {
   type = string
   description = "Flavor name for workers"
+<<<<<<< Updated upstream
   default = "gp.5.2.6"
+=======
+  default = "gp.5.2.8"
+>>>>>>> Stashed changes
 }
 
 variable "compute_count" {
@@ -96,7 +112,11 @@ variable "compute_image" {
 variable "compute_flavor" {
   type = string
   description = "Flavor name for compute nodes"
+<<<<<<< Updated upstream
   default = "gp.5.2.8"
+=======
+  default = "gp.5.4.16"
+>>>>>>> Stashed changes
 }
 
 variable "storage_count" {
@@ -114,7 +134,11 @@ variable "storage_image" {
 variable "storage_flavor" {
   type = string
   description = "Flavor name for storage nodes"
+<<<<<<< Updated upstream
   default = "gp.5.2.6"
+=======
+  default = "gp.5.2.8"
+>>>>>>> Stashed changes
 }
 
 variable "ceph_count" {
@@ -132,7 +156,11 @@ variable "ceph_image" {
 variable "ceph_flavor" {
   type = string
   description = "Flavor name for ceph nodes"
+<<<<<<< Updated upstream
   default = "gp.5.2.6"
+=======
+  default = "gp.5.2.8"
+>>>>>>> Stashed changes
 }
 
 variable "bastion_image" {
@@ -144,7 +172,11 @@ variable "bastion_image" {
 variable "bastion_flavor" {
   type = string
   description = "Flavor name for bastion node"
+<<<<<<< Updated upstream
   default = "gp.5.4.4"
+=======
+  default = "gp.5.2.4"
+>>>>>>> Stashed changes
 }
 
 variable "cluster_name" {
