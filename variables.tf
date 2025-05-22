@@ -48,7 +48,7 @@ variable "network_flavor" {
 variable "controller_count" {
   type = number
   description = "number of controllers"
-  default = 3
+  default = 5
 }
 
 variable "controller_image" {
