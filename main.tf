@@ -483,6 +483,48 @@ resource "openstack_compute_instance_v2" "ceph-node" {
   }
 }
 
+# Create network ports for cinder nodes
+resource "openstack_networking_port_v2" "cinder-ports" {
+  count              = var.storage_count
+  name               = format("cinder%02d.%s", count.index + 1, var.cluster_name)
+  network_id         = openstack_networking_network_v2.openstack-flex.id
+  admin_state_up     = "true"
+  security_group_ids = [openstack_networking_secgroup_v2.secgroup-flex-nodes.id]
+  fixed_ip {
+    subnet_id = openstack_networking_subnet_v2.openstack-flex-subnet.id
+  }
+  dynamic "allowed_address_pairs" {
+    for_each = toset(var.mlb_vips)
+    content {
+      ip_address = allowed_address_pairs.value
+    }
+  }
+}
+
+# Create cinder nodes
+resource "openstack_compute_instance_v2" "cinder-node" {
+  count       = var.cinder_count
+  name        = format("cinder%02d.%s", count.index + 1, var.cluster_name)
+  image_name  = var.cinder_image
+  flavor_name = var.cinder_flavor
+  key_pair    = openstack_compute_keypair_v2.mykey.name
+  network {
+    port = openstack_networking_port_v2.cinder-ports[count.index].id
+  }
+  network {
+    name = openstack_networking_network_v2.openstack-flex-internal.name
+  }
+  network {
+    name = openstack_networking_network_v2.openstack-flex-compute.name
+  }
+  metadata = {
+    hostname = format("cinder%02d", count.index + 1)
+    group    = "openstack-flex"
+    cluster_name = var.cluster_name
+    role         = "cinder"
+  }
+}
+
 # Create storage volumes and attach to storage nodes
 module "storage-volumes" {
   source        = "./modules/storage-volumes"
@@ -495,6 +537,14 @@ module "storage-volumes" {
 module "ceph-volumes" {
   source        = "./modules/ceph-volumes"
   for_each      = {for item in openstack_compute_instance_v2.ceph-node : item.name => item.id}
+  instance-name = each.key
+  instance-uuid = each.value
+}
+
+# Create storage volumes and attach to cinder nodes
+module "cinder-volumes" {
+  source        = "./modules/cinder-volumes"
+  for_each      = {for item in openstack_compute_instance_v2.cinder-node : item.name => item.id}
   instance-name = each.key
   instance-uuid = each.value
 }

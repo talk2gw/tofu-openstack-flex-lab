@@ -135,6 +135,25 @@ variable "ceph_flavor" {
   default = "gp.0.4.8"
 }
 
+
+variable "cinder_count" {
+  type = number
+  description = "Number of cinder nodes that will also have storage volumes."
+  default = 3
+}
+
+variable "cinder_image" {
+  type = string
+  description = "Image name for cinder nodes"
+  default = "Ubuntu 22.04"
+}
+
+variable "cinder_flavor" {
+  type = string
+  description = "Flavor name for cinder nodes"
+  default = "gp.0.4.8"
+}
+
 variable "bastion_image" {
   type = string
   description = "Image name for bastion node"
