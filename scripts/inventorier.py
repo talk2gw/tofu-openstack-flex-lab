@@ -16,6 +16,7 @@ worker_prefix = 'worker'
 compute_prefix = 'compute'
 storage_prefix = 'storage'
 ceph_prefix = 'ceph'
+cinder_prefix = 'cinder'
 cluster_name = 'cluster.local'
 kube_ovn_iface = 'enp4s0'
 mgmt_network = 'openstack-flex'
@@ -34,7 +35,8 @@ hosts = sorted([
     host['name'].startswith(storage_prefix) or
     host['name'].startswith(kubernetes_prefix) or
     host['name'].startswith(network_prefix) or
-    host['name'].startswith(ceph_prefix)
+    host['name'].startswith(ceph_prefix) or
+    host['name'].startswith(cinder_prefix)
 ], key=lambda x: x[0])
 
 inventory = {
@@ -73,6 +75,7 @@ inventory = {
                     host[0].startswith(compute_prefix) or
                     host[0].startswith(storage_prefix) or
                     host[0].startswith(ceph_prefix) or
+                    host[0].startswith(cinder_prefix) or                    
                     host[0].startswith(network_prefix)
                 }},
                 'openstack_control_plane': {'hosts': {
@@ -95,6 +98,11 @@ inventory = {
                             host[0].startswith(ceph_prefix)
                         }},
                         'cinder_storage_nodes': {'hosts': {
+                            host[0]: None
+                            for host in hosts if
+                            host[0].startswith(cinder_prefix)
+                        }},
+                        'storage_nodes': {'hosts': {
                             host[0]: None
                             for host in hosts if
                             host[0].startswith(storage_prefix)

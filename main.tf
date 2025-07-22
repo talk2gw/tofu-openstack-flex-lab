@@ -485,7 +485,7 @@ resource "openstack_compute_instance_v2" "ceph-node" {
 
 # Create network ports for cinder nodes
 resource "openstack_networking_port_v2" "cinder-ports" {
-  count              = var.storage_count
+  count              = var.cinder_count
   name               = format("cinder%02d.%s", count.index + 1, var.cluster_name)
   network_id         = openstack_networking_network_v2.openstack-flex.id
   admin_state_up     = "true"

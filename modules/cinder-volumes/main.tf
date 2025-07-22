@@ -29,3 +29,4 @@ resource "openstack_compute_volume_attach_v2" "cinder_attachments" {
   instance_id = var.instance-uuid
   volume_id = each.value
 }
+
